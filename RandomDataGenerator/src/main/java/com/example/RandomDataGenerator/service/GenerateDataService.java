@@ -7,6 +7,7 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import com.example.RandomDataGenerator.model.RandomData;
+import com.example.RandomDataGenerator.util.PasswordGeneratorHelper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -52,18 +53,27 @@ public class GenerateDataService {
     return sb.toString();
   }
 
+  // calls static method in PasswordGeneratorHelper class
+  // generates password between 8 - 15 length
+  public String generatePassword() {
+    int passwordLength = random.nextInt(15 - 8 + 1) + 8;
+    return PasswordGeneratorHelper.generatePassword(12);
+  }
+
   // generates single data object
   public RandomData generateData() {
     String firstName = firstNames.get(random.nextInt(firstNames.size()));
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
     String phoneNumber = generateNumber();
-    return new RandomData(firstName, lastName, phoneNumber);
+    String password = generatePassword();
+    return new RandomData(firstName, lastName, phoneNumber, password);
   }
 
+  // testing
   public static void main(String[] args) throws Exception {
     GenerateDataService service = new GenerateDataService();
     service.generateNames();
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 3; i++) {
       System.out.println(service.generateData());
       System.out.println("---------");
     }
