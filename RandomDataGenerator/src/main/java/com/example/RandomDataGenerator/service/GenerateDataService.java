@@ -53,7 +53,7 @@ public class GenerateDataService {
   }
 
   // generates single data object
-  public RandomData generaData() {
+  public RandomData generateData() {
     String firstName = firstNames.get(random.nextInt(firstNames.size()));
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
     String phoneNumber = generateNumber();
@@ -64,7 +64,7 @@ public class GenerateDataService {
     GenerateDataService service = new GenerateDataService();
     service.generateNames();
     for(int i = 0; i < 10; i++) {
-      System.out.println(service.generaData());
+      System.out.println(service.generateData());
       System.out.println("---------");
     }
   }
