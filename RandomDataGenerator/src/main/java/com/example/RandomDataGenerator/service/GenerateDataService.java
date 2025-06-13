@@ -64,9 +64,10 @@ public class GenerateDataService {
   public String generateEmail() {
     String firstName = firstNames.get(random.nextInt(firstNames.size()));
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
-    
-    String domain = "@mail.com";
-    return firstName + "." + lastName + domain;
+    int num = random.nextInt(1000);
+    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+    String randomDomain = domains[random.nextInt(domains.length)];
+    return firstName + "." + lastName + num + "@" + randomDomain;
   }
 
 
