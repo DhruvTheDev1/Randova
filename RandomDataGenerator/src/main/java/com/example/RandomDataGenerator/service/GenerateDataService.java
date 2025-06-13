@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
+import com.example.RandomDataGenerator.model.RandomData;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -18,7 +19,9 @@ public class GenerateDataService {
   private Random random = new Random();
 
   @PostConstruct
+  // loads names into list during startup once before the bean is used
   public void generateNames() throws Exception {
+    // reads JSON names and converts to objects
     ObjectMapper mapper = new ObjectMapper();
 
     InputStream firstStream = getClass().getResourceAsStream("/first-names.json");
@@ -28,14 +31,9 @@ public class GenerateDataService {
     });
     lastNames = mapper.readValue(lastStream, new TypeReference<List<String>>() {
     });
-
-    //test
-    System.out.println("First Name size:");
-    System.out.println(firstNames.size());
-    System.out.println("Last Name size:");
-    System.out.println(lastNames.size());
   }
 
+  // generates random name from list
   public String generateRandomFullName() {
     String firstName = firstNames.get(random.nextInt(firstNames.size()));
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
@@ -43,11 +41,28 @@ public class GenerateDataService {
     return firstName + " " + lastName;
   }
 
-  //testing
+  // generate random phone number
+  public String generateNumber() {
+    StringBuilder sb = new StringBuilder("+44");
+    sb.append("7");
+
+    for (int i = 0; i < 9; i++) {
+      sb.append(random.nextInt(10));
+    }
+    return sb.toString();
+  }
+
+  // generates single data object
+  public RandomData generaData() {
+    String firstName = firstNames.get(random.nextInt(firstNames.size()));
+    String lastName = lastNames.get(random.nextInt(lastNames.size()));
+    String phoneNumber = generateNumber();
+    return new RandomData(firstName, lastName, phoneNumber);
+  }
+
   public static void main(String[] args) throws Exception {
     GenerateDataService service = new GenerateDataService();
     service.generateNames();
-    System.out.println(service.generateRandomFullName());
-    System.out.println(service.generateRandomFullName());
+    System.out.println(service.generaData());
   }
 }
