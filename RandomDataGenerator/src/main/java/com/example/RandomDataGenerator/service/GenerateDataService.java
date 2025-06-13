@@ -57,8 +57,19 @@ public class GenerateDataService {
   // generates password between 8 - 15 length
   public String generatePassword() {
     int passwordLength = random.nextInt(15 - 8 + 1) + 8;
-    return PasswordGeneratorHelper.generatePassword(12);
+    return PasswordGeneratorHelper.generatePassword(passwordLength);
   }
+  
+  // generate emails
+  public String generateEmail() {
+    String firstName = firstNames.get(random.nextInt(firstNames.size()));
+    String lastName = lastNames.get(random.nextInt(lastNames.size()));
+    
+    String domain = "@mail.com";
+    return firstName + "." + lastName + domain;
+  }
+
+
 
   // generates single data object
   public RandomData generateData() {
@@ -66,7 +77,8 @@ public class GenerateDataService {
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
     String phoneNumber = generateNumber();
     String password = generatePassword();
-    return new RandomData(firstName, lastName, phoneNumber, password);
+    String email = generateEmail();
+    return new RandomData(firstName, lastName, phoneNumber, password, email);
   }
 
   // testing

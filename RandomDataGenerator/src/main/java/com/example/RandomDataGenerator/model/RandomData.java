@@ -5,15 +5,17 @@ public class RandomData {
   private String lastName;
   private String phoneNumber;
   private String password;
+  private String email;
 
   public RandomData() {
   }
 
-  public RandomData(String firstName, String lastName, String phoneNumber, String password) {
+  public RandomData(String firstName, String lastName, String phoneNumber, String password, String email) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.password = password;
+    this.email = email;
   }
 
   public String getFirstName() {
@@ -42,7 +44,7 @@ public class RandomData {
 
   @Override
   public String toString() {
-    return this.firstName + " " + this.lastName + " " + this.phoneNumber + " " + this.password;
+    return this.firstName + " " + this.lastName + " " + this.phoneNumber + " " + this.password + " " + this.email;
   }
 
 }
