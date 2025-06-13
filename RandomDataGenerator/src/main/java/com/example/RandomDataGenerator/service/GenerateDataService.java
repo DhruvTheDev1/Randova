@@ -63,6 +63,9 @@ public class GenerateDataService {
   public static void main(String[] args) throws Exception {
     GenerateDataService service = new GenerateDataService();
     service.generateNames();
-    System.out.println(service.generaData());
+    for(int i = 0; i < 10; i++) {
+      System.out.println(service.generaData());
+      System.out.println("---------");
+    }
   }
 }
