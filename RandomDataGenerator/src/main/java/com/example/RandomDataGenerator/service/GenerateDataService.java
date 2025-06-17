@@ -17,6 +17,7 @@ import jakarta.annotation.PostConstruct;
 public class GenerateDataService {
   private List<String> firstNames;
   private List<String> lastNames;
+  private List<String> country;
   private Random random = new Random();
 
   @PostConstruct
@@ -34,12 +35,28 @@ public class GenerateDataService {
     });
   }
 
+  @PostConstruct
+  // loads countries into list
+  public void generateCountry() throws Exception {
+    ObjectMapper mapper = new ObjectMapper();
+
+    InputStream countryStream = getClass().getResourceAsStream("/countries.json");
+
+    country = mapper.readValue(countryStream, new TypeReference<List<String>>() {
+    });
+  }
+
   // generates random name from list
   public String generateRandomFullName() {
     String firstName = firstNames.get(random.nextInt(firstNames.size()));
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
 
     return firstName + " " + lastName;
+  }
+
+  public String generateRandomCountry() {
+    String randomCountry = country.get(random.nextInt(country.size()));
+    return randomCountry;
   }
 
   // generate random phone number
@@ -59,18 +76,16 @@ public class GenerateDataService {
     int passwordLength = random.nextInt(15 - 8 + 1) + 8;
     return PasswordGeneratorHelper.generatePassword(passwordLength);
   }
-  
+
   // generate emails
   public String generateEmail(String firstName, String lastName) {
     // String firstName = firstNames.get(random.nextInt(firstNames.size()));
     // String lastName = lastNames.get(random.nextInt(lastNames.size()));
     int num = random.nextInt(1000);
-    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com"};
+    String[] domains = { "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com" };
     String randomDomain = domains[random.nextInt(domains.length)];
     return firstName + "." + lastName + num + "@" + randomDomain;
   }
-
-
 
   // generates single data object
   public RandomData generateData() {
@@ -79,16 +94,20 @@ public class GenerateDataService {
     String phoneNumber = generateNumber();
     String password = generatePassword();
     String email = generateEmail(firstName, lastName);
-    return new RandomData(firstName, lastName, phoneNumber, password, email);
+    String country = generateRandomCountry();
+    return new RandomData(firstName, lastName, phoneNumber, password, email, country);
   }
 
   // testing
   public static void main(String[] args) throws Exception {
     GenerateDataService service = new GenerateDataService();
     service.generateNames();
-    for(int i = 0; i < 3; i++) {
+    service.generateCountry();
+    for (int i = 0; i < 3; i++) {
       System.out.println(service.generateData());
       System.out.println("---------");
     }
+
+    System.out.println("Random Full Name: " + service.generateRandomFullName());
   }
 }
