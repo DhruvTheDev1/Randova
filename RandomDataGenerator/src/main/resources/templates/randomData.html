@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title>Random Data Generator</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+  <script src='main.js'></script>
+</head>
+
+<body>
+  <h1>Random Data Generator</h1>
+  <p>Name: <span th:text="${randomData.firstName} + ' ' + ${randomData.lastName}"></span></p>
+  <p>Email: <span th:text="${randomData.email}"></span></p>
+  <p>Phone Number: <span th:text="${randomData.phoneNumber}"></span></p>
+  <p>Password: <span th:text="${randomData.password}"></span></p>
+  <p>Country: <span th:text="${randomData.country}"></span></p>
+</body>
+
+</html>

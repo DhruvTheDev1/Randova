@@ -17,6 +17,6 @@ public class GenerateDataController {
   public String generateRandomData(Model model) {
     RandomData randomData = generateDataService.generateData();
     model.addAttribute("randomData", randomData);
-    return "index";
+    return "randomData";
   }
 }
