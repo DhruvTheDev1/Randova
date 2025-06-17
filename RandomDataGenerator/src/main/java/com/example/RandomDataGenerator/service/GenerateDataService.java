@@ -46,17 +46,16 @@ public class GenerateDataService {
     });
   }
 
-  // generates random name from list
-  public String generateRandomFullName() {
-    String firstName = firstNames.get(random.nextInt(firstNames.size()));
-    String lastName = lastNames.get(random.nextInt(lastNames.size()));
+  public String generateFirstName() {
+    return firstNames.get(random.nextInt(firstNames.size()));
+  }
 
-    return firstName + " " + lastName;
+  public String generateLastName() {
+    return lastNames.get(random.nextInt(lastNames.size()));
   }
 
   public String generateRandomCountry() {
-    String randomCountry = country.get(random.nextInt(country.size()));
-    return randomCountry;
+    return country.get(random.nextInt(country.size()));
   }
 
   // generate random phone number
@@ -89,8 +88,8 @@ public class GenerateDataService {
 
   // generates single data object
   public RandomData generateData() {
-    String firstName = firstNames.get(random.nextInt(firstNames.size()));
-    String lastName = lastNames.get(random.nextInt(lastNames.size()));
+    String firstName = generateFirstName();
+    String lastName = generateLastName();
     String phoneNumber = generateNumber();
     String password = generatePassword();
     String email = generateEmail(firstName, lastName);
@@ -107,7 +106,5 @@ public class GenerateDataService {
       System.out.println(service.generateData());
       System.out.println("---------");
     }
-
-    System.out.println("Random Full Name: " + service.generateRandomFullName());
   }
 }
