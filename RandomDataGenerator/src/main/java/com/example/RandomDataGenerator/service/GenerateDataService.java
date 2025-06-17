@@ -61,11 +61,11 @@ public class GenerateDataService {
   }
   
   // generate emails
-  public String generateEmail() {
-    String firstName = firstNames.get(random.nextInt(firstNames.size()));
-    String lastName = lastNames.get(random.nextInt(lastNames.size()));
+  public String generateEmail(String firstName, String lastName) {
+    // String firstName = firstNames.get(random.nextInt(firstNames.size()));
+    // String lastName = lastNames.get(random.nextInt(lastNames.size()));
     int num = random.nextInt(1000);
-    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com"};
+    String[] domains = {"gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com"};
     String randomDomain = domains[random.nextInt(domains.length)];
     return firstName + "." + lastName + num + "@" + randomDomain;
   }
@@ -78,7 +78,7 @@ public class GenerateDataService {
     String lastName = lastNames.get(random.nextInt(lastNames.size()));
     String phoneNumber = generateNumber();
     String password = generatePassword();
-    String email = generateEmail();
+    String email = generateEmail(firstName, lastName);
     return new RandomData(firstName, lastName, phoneNumber, password, email);
   }
 
