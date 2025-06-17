@@ -11,7 +11,8 @@ public class RandomData {
   public RandomData() {
   }
 
-  public RandomData(String firstName, String lastName, String phoneNumber, String password, String email, String country) {
+  public RandomData(String firstName, String lastName, String phoneNumber, String password, String email,
+      String country) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
@@ -51,7 +52,7 @@ public class RandomData {
   public void setEmail(String email) {
     this.email = email;
   }
-  
+
   public String getCountry() {
     return country;
   }
@@ -62,7 +63,12 @@ public class RandomData {
 
   @Override
   public String toString() {
-    return this.firstName + " " + this.lastName + " " + this.phoneNumber + " " + this.password + " " + this.email + " " + this.country;
+    return "First Name: " + firstName + "\n" +
+        "Last Name: " + lastName + "\n" +
+        "Phone Number: " + phoneNumber + "\n" +
+        "Password: " + password + "\n" +
+        "Email: " + email + "\n" +
+        "Country: " + country;
   }
 
 }
