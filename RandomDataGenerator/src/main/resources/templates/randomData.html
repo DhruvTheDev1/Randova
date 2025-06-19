@@ -12,11 +12,11 @@
 
 <body>
   <h1>Random Data Generator</h1>
-  <p>Name: <span th:text="${randomData.firstName} + ' ' + ${randomData.lastName}"></span></p>
-  <p>Email: <span th:text="${randomData.email}"></span></p>
-  <p>Phone Number: <span th:text="${randomData.phoneNumber}"></span></p>
-  <p>Password: <span th:text="${randomData.password}"></span></p>
-  <p>Country: <span th:text="${randomData.country}"></span></p>
+  <p><strong>Name:</strong> <span th:text="${randomData.firstName} + ' ' + ${randomData.lastName}"></span></p>
+  <p><strong>Email:</strong> <span th:text="${randomData.email}"></span></p>
+  <p><strong>Phone Number:</strong> <span th:text="${randomData.phoneNumber}"></span></p>
+  <p><strong>Password:</strong> <span th:text="${randomData.password}"></span></p>
+  <p><strong>Country:</strong> <span th:text="${randomData.country}"></span></p>
 </body>
 
 </html>
