@@ -1,5 +1,8 @@
 package com.example.RandomDataGenerator.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +18,11 @@ public class GenerateDataController {
 
   @GetMapping("/generated-random-data")
   public String generateRandomData(Model model) {
-    RandomData randomData = generateDataService.generateData();
+    List<RandomData> randomData = new ArrayList<>();
+    for (int i = 0; i < 3; i++) {
+      randomData.add(generateDataService.generateData());
+    }
+
     model.addAttribute("randomData", randomData);
     return "randomData";
   }
