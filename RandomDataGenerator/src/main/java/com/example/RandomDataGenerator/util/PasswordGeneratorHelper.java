@@ -3,7 +3,7 @@ package com.example.RandomDataGenerator.util;
 import java.security.SecureRandom;
 
 public class PasswordGeneratorHelper {
-  private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXZY";
+  private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   private static final String LOWER = UPPER.toLowerCase();
   private static final String DIGITS = "0123456789";
   private static final String SPECIAL_CHARS = "!@#$%^&*()_+{}[]";
@@ -18,7 +18,7 @@ public class PasswordGeneratorHelper {
     password.append(UPPER.charAt(secureRandom.nextInt(UPPER.length())));
     password.append(LOWER.charAt(secureRandom.nextInt(LOWER.length())));
     password.append(DIGITS.charAt(secureRandom.nextInt(DIGITS.length())));
-    password.append(SPECIAL_CHARS.charAt(secureRandom.nextInt(DIGITS.length())));
+    password.append(SPECIAL_CHARS.charAt(secureRandom.nextInt(SPECIAL_CHARS.length())));
     // remaining filled randomly from PASSWORD_ALLOWED
     for(int i = 4; i < length; i++) {
      password.append(PASSWORD_ALLOWED.charAt(secureRandom.nextInt(PASSWORD_ALLOWED.length())));
