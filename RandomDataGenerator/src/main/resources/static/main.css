@@ -1,0 +1,24 @@
+table {
+  width: 90%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #eee;
+  font-weight: bold;
+}
+
+
+button#btnRefresh {
+display: block;
+margin: 20px auto;
+padding: 10px 25px;
+}
