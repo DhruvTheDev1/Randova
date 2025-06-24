@@ -12,16 +12,29 @@
 
 <body>
   <h1>Random Data Generator</h1>
-    <div th:each="data : ${randomData}">
-  <p><strong>Name:</strong> <span th:text="${data.firstName} + ' ' + ${data.lastName}"></span></p>
-  <p><strong>Email:</strong> <span th:text="${data.email}"></span></p>
-  <p><strong>Phone Number:</strong> <span th:text="${data.phoneNumber}"></span></p>
-  <p><strong>Password:</strong> <span th:text="${data.password}"></span></p>
-  <p><strong>Country:</strong> <span th:text="${data.country}"></span></p>
-   <hr />
-    </div>
+  <div th:each="data : ${randomData}">
+    <p><strong>Name:</strong> <span th:text="${data.firstName} + ' ' + ${data.lastName}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${data.email}"></span></p>
+    <p><strong>Phone Number:</strong> <span th:text="${data.phoneNumber}"></span></p>
+    <p><strong>Password:</strong> <span th:text="${data.password}"></span></p>
+    <p><strong>Country:</strong> <span th:text="${data.country}"></span></p>
+    <hr />
+  </div>
+
+  <button id="btnRefresh" type="button">
+    Refresh
+  </button>
+
+  <script>
+    const refreshBtn = document.getElementById("btnRefresh");
+
+    function handleClick() {
+      window.location.reload();
+    }
+    
+    refreshBtn.addEventListener("click", handleClick);
+  </script>
+
 </body>
 
 </html>
-
-
