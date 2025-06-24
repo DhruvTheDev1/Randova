@@ -19,7 +19,7 @@ public class GenerateDataController {
   @GetMapping("/generated-random-data")
   public String generateRandomData(Model model) {
     List<RandomData> randomData = new ArrayList<>();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 10; i++) {
       randomData.add(generateDataService.generateData());
     }
 
