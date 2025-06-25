@@ -96,15 +96,4 @@ public class GenerateDataService {
     String country = generateRandomCountry();
     return new RandomData(firstName, lastName, phoneNumber, password, email, country);
   }
-
-  // testing
-  public static void main(String[] args) throws Exception {
-    GenerateDataService service = new GenerateDataService();
-    service.generateNames();
-    service.generateCountry();
-    for (int i = 0; i < 3; i++) {
-      System.out.println(service.generateData());
-      System.out.println("---------");
-    }
-  }
 }

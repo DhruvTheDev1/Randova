@@ -4,14 +4,14 @@ h1{
 
 table {
   width: 60%;
-  margin: 20px auto;
+  margin: auto;
   border-collapse: collapse;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 th, td {
   border: 3px solid #ccc;
-  padding: 5px 8px;
+  padding: 8px 12px;
   text-align: left;
 }
 
