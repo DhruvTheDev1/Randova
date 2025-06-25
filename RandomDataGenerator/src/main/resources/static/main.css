@@ -40,3 +40,21 @@ font-size: 1rem;
   color: #444;
 }
 
+.copied {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: green;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  font-family: sans-serif;
+  z-index: 1000;
+}
+
+.copied.show {
+  opacity: 1;
+}
