@@ -21,6 +21,11 @@ public class GenerateDataService {
   private Random random = new Random();
 
   @PostConstruct
+  public void init() throws Exception {
+    generateNames();
+    generateCountry();
+  }
+
   // loads names into list during startup once before the bean is used
   public void generateNames() throws Exception {
     // reads JSON names and converts to objects
@@ -35,7 +40,6 @@ public class GenerateDataService {
     });
   }
 
-  @PostConstruct
   // loads countries into list
   public void generateCountry() throws Exception {
     ObjectMapper mapper = new ObjectMapper();
